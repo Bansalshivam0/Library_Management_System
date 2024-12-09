@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Library Management</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/library_1.jpg') }}");
+            background-size: cover;
+            height:95vh;
+            background-repeat: no-repeat;
+            background-position: center;
+        
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #01eeff;
+}
+
+a {
+    color: #131313;
+    text-decoration: none;
+    margin-left:2.75cm;
+    font-size:large;
+    font-weight: 650;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+form input, form button {
+    margin: 5px 0;
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #fff;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul li a {
+    float: right;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+ul li a:hover {
+    color: #a71d2a;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    max-width: 600px;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Library Management System</h1>
+        <a href="/students">Manage Students   </a>
+        <a href="/books">Manage Books</a>
+        <form action="/search" method="post">
+            <input type="text" name="query" placeholder="Search..." />
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const deleteLinks = document.querySelectorAll('a[href^="/delete_"]');
+    deleteLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const confirmDelete = confirm("Are you sure you want to delete this?");
+            if (!confirmDelete) {
+                e.preventDefault();
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
